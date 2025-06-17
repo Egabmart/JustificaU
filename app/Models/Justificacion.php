@@ -9,17 +9,16 @@ class Justificacion extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'student_name',
         'student_id',
+        'clase', // <--- AÑADIR
+        'grupo', // <--- AÑADIR
+        'hora',  // <--- AÑADIR
         'reason',
         'start_date',
         'end_date',
+        'constancia_path', // <--- AÑADIR
         'status',
     ];
 }
