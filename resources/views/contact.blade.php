@@ -4,7 +4,7 @@
     <div class="bg-white dark:bg-gray-800 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
-                <h2 class="text-base text-blue-600 dark:text-blue-400 font-semibold tracking-wide uppercase">Ponte en Contacto</h2>
+                <h2 class="text-base text-custom-cyan dark:text-custom-cyan font-semibold tracking-wide uppercase">Ponte en Contacto</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                     Estamos aquí para ayudarte
                 </p>
@@ -37,7 +37,7 @@
                             <textarea name="message" id="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-custom-cyan hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                 Enviar Mensaje
                             </button>
                         </div>

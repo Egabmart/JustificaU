@@ -11,6 +11,10 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                'custom-cyan': '#0099a8',
+                'custom-cyan-dark': '#007a86',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
