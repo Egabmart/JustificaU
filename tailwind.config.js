@@ -14,6 +14,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            // AÑADIR ESTA SECCIÓN DE COLORES
+            colors: {
+                'uam-blue': {
+                    '500': '#00a99d', // Color principal del logo de la UAM
+                    '600': '#00938A', // Un tono un poco más oscuro para el hover
+                },
+            },
         },
     },
 
