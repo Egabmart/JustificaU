@@ -23,16 +23,17 @@ class JustificacionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'student_name' => 'required|string|max:255',
-            'student_id'   => 'required|string|max:20|unique:justificacions,student_id',
             'clase'        => 'required|string|max:255',
             'grupo'        => 'required|string|max:50',
             'hora'         => 'required|date_format:H:i',
             'reason'       => 'required|string',
             'start_date'   => 'required|date',
             'end_date'     => 'required|date|after_or_equal:start_date',
-            'constancia'   => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048', // Validación del archivo
+            'constancia'   => 'required|file|mimes:pdf,jpg,png,jpeg|max:2048', // Validación del archivo
         ]);
+
+        $validatedData['student_name'] = auth()->user()->name;
+        $validatedData['student_id'] = auth()->user()->cif; // O `id`, depende cómo se llame en tu modelo User
 
         if ($request->hasFile('constancia')) {
             $validatedData['constancia_path'] = $request->file('constancia')->store('constancias', 'public');
@@ -56,16 +57,13 @@ class JustificacionController extends Controller
     public function update(Request $request, Justificacion $justificacione)
     {
         $validatedData = $request->validate([
-            'student_name' => 'required|string|max:255',
-            'student_id'   => ['required', 'string', 'max:20', Rule::unique('justificacions')->ignore($justificacione->id)],
             'clase'        => 'required|string|max:255',
             'grupo'        => 'required|string|max:50',
             'hora'         => 'required|date_format:H:i',
             'reason'       => 'required|string',
             'start_date'   => 'required|date',
             'end_date'     => 'required|date|after_or_equal:start_date',
-            'constancia'   => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048',
-            'status'       => 'required|in:Pendiente,Aprobada,Rechazada',
+            'constancia'   => 'required|file|mimes:pdf,jpg,png,jpeg|max:2048',
         ]);
 
         if ($request->hasFile('constancia')) {
