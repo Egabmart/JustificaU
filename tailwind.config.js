@@ -17,8 +17,8 @@ export default {
             // Nos aseguramos de que esta sección exista
             colors: {
                 'uam-blue': {
-                    '500': '#00a99d', // Color principal del logo
-                    '600': '#00938A', // Tono para el hover
+                    '500': '#0099a8', // Color principal del logo
+                    '600': '#007a86', // Tono para el hover
                 },
             },
         },

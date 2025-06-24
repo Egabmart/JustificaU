@@ -41,9 +41,9 @@
                          @auth
                             <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Dashboard</a>
                          @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Iniciar Sesión</a>
+                            <a href="{{ route('login') }}" class="text-sm font-medium text-gray-500 dark:text-gray-400 no-underline hover:text-uam-blue-500 dark:hover:text-uam-blue-500 transition duration-150 ease-in-out">Iniciar Sesión</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm font-medium text-gray-500 dark:text-gray-400 no-underline hover:text-uam-blue-500 dark:hover:text-uam-blue-500 transition duration-150 ease-in-out">Registrarse</a>
                             @endif
                          @endauth
                     </div>
