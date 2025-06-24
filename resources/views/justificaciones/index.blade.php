@@ -38,7 +38,6 @@
                                 @forelse($justificaciones as $justificacione)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{{ $justificacione->student_name }}<br><span class="text-xs text-gray-500">{{$justificacione->student_id}}</span></td>
-                                        {{-- LÍNEA CORREGIDA --}}
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">{{ $justificacione->clase }}<br><span class="text-xs text-gray-500">{{$justificacione->grupo}} - {{ \Carbon\Carbon::parse($justificacione->hora)->format('h:i A') }}</span></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                             @if($justificacione->constancia_path)
@@ -52,6 +51,9 @@
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Aprobada</span>
                                             @elseif ($justificacione->status == 'Rechazada')
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rechazada</span>
+                                                @if($justificacione->rejection_reason)
+                                                    <p class="text-xs text-gray-500 mt-1 italic" title="{{ $justificacione->rejection_reason }}">Motivo: {{ \Illuminate\Support\Str::limit($justificacione->rejection_reason, 20) }}</p>
+                                                @endif
                                             @else
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span>
                                             @endif
