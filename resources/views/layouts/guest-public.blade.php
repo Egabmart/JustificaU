@@ -6,7 +6,7 @@
     <title>{{ isset($title) ? $title . ' - ' : '' }}{{ config('app.name', 'JustificaU') }}</title>
 
 
-    <link rel="icon" href="{{ asset('images/uam-logo.jpeg') }}" type="image/jpeg" />
+    <link rel="icon" href="{{ asset('images/logo-uam-sin-fondo.png') }}" type="image/jpeg" />
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
