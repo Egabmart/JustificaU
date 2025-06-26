@@ -335,7 +335,118 @@ return [
                 '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
             ],
         ],
-        // ... (resto de la carrera)
+        'Segundo Año' => [
+            'Macroeconomía II' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'valerialeon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dgmora@uam.edu.ni'],
+            ],
+            'Cálculo Aplicado II' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Estadística I' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Macroeconomía I' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+            'Pensamiento Económico' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Matemática Financiera' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Estadística II' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Macroeconomía II' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+        ],
+        'Tercer Año' => [
+            'Análisis de los Estados Financieros' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'valerialeon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dgmora@uam.edu.ni'],
+            ],
+            'Investigación de Operaciones' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Finanzas I' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Macroeconomía III' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+            'Mercadeo' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Teoría de Juegos' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Finanzas II' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Econometría I' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+        ],
+        'Cuarto Año' => [
+            'Economía Internacional' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'valerialeon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dgmora@uam.edu.ni'],
+            ],
+            'Econometría II' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Evaluación de Proyectos de Inversión' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Historia Económica' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+            'Política Económica' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Economía del Sector Público' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Seminario de Tópicos Económicos' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+            'Taller de Investigación' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+        ],
+        'Quinto Año' => [
+            'Prácticas de Especialización' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'valerialeon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dgmora@uam.edu.ni'],
+            ],
+            'Tesis de Grado' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+        ],
     ],
     'Negocios Internacionales' => [
         'Primer Año' => [
@@ -372,7 +483,84 @@ return [
                 '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
             ],
         ],
-        // ... (resto de la carrera)
+        'Segundo Año' => [
+            'Logística y Cadena de Suministro' => [
+                '1' => ['nombre' => 'Lic. Carlos Mendoza', 'email' => 'cmendoza@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Sofia Vargas', 'email' => 'svargas@uam.edu.ni'],
+            ],
+            'Investigación de Mercados Globales' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Tratados y Acuerdos Comerciales' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+            'Gestión de RRHH Global' => [
+                '1' => ['nombre' => 'Lic. Lucia Cordero', 'email' => 'lcordero@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Fernando Nuñez', 'email' => 'fnunez@uam.edu.ni'],
+            ],
+            'Estrategia de Negocios Internacionales' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Cultura y Ética en los Negocios' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Operaciones de Importación y Exportación' => [
+                '1' => ['nombre' => 'Lic. Ricardo Salas', 'email' => 'rsalas@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Monica Falla', 'email' => 'mfalla@uam.edu.ni'],
+            ],
+            'Análisis de Riesgo País' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+        ],
+        'Tercer Año' => [
+            'Geopolítica y Negocios' => [
+                '1' => ['nombre' => 'Lic. Carlos Mendoza', 'email' => 'cmendoza@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Sofia Vargas', 'email' => 'svargas@uam.edu.ni'],
+            ],
+            'Marketing Digital Global' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Contratos Internacionales' => [
+                '1' => ['nombre' => 'Lic. Valeria Leon', 'email' => 'vleon@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Diego Mora', 'email' => 'dmora@uam.edu.ni'],
+            ],
+            'Simulación de Negocios Globales' => [
+                '1' => ['nombre' => 'Lic. Lucia Cordero', 'email' => 'lcordero@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Fernando Nuñez', 'email' => 'fnunez@uam.edu.ni'],
+            ],
+            'Gestión de Proyectos Internacionales' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Finanzas Corporativas Internacionales' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Emprendimiento Global' => [
+                '1' => ['nombre' => 'Lic. Ricardo Salas', 'email' => 'rsalas@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Monica Falla', 'email' => 'mfalla@uam.edu.ni'],
+            ],
+            'Taller de Graduación I' => [
+                '1' => ['nombre' => 'Lic. Ana Guzman', 'email' => 'aguzman@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Jorge Castro', 'email' => 'jcastro@uam.edu.ni'],
+            ],
+        ],
+        'Cuarto Año' => [
+            'Prácticas Profesionales' => [
+                '1' => ['nombre' => 'Lic. Carlos Mendoza', 'email' => 'cmendoza@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Sofia Vargas', 'email' => 'svargas@uam.edu.ni'],
+            ],
+            'Taller de Graduación II' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+        ],
     ],
     'Derecho' => [
         'Primer Año' => [
@@ -405,7 +593,134 @@ return [
                 '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
             ],
         ],
-        // ... (resto de la carrera)
+        'Segundo Año' => [
+            'Derecho de Bienes' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Derecho de Obligaciones' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Derecho Penal I' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Derecho Constitucional II' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Derecho de Sucesiones' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Contratos Civiles' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Derecho Penal II' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Derecho Administrativo I' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+        ],
+        'Tercer Año' => [
+            'Derecho Procesal Civil I' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Derecho Mercantil I' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Derecho Laboral' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Derecho Administrativo II' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Derecho Procesal Civil II' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Derecho Mercantil II' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Derecho Procesal Penal' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Derecho Tributario' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+        ],
+        'Cuarto Año' => [
+            'Derecho Notarial y Registral I' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Derecho Internacional Público' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Medicina Forense' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Derecho Ambiental' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Derecho Notarial y Registral II' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Derecho Internacional Privado' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Criminología' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Métodos Alternos de Resolución de Conflictos' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+        ],
+        'Quinto Año' => [
+            'Prácticas Penales y Civiles' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Filosofía del Derecho' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+            'Técnicas de Litigación Oral' => [
+                '1' => ['nombre' => 'Lic. Aquiles Bailo', 'email' => 'abailo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Ines Quele', 'email' => 'iquele@uam.edu.ni'],
+            ],
+            'Taller de Tesis' => [
+                '1' => ['nombre' => 'Lic. Gabriela Solano', 'email' => 'gsolano@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Mateo Rojas', 'email' => 'mrojas@uam.edu.ni'],
+            ],
+            'Prácticas de Familia, Laboral y Administrativo' => [
+                '1' => ['nombre' => 'Lic. Armando Paredes', 'email' => 'aparedes@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elsa Pato', 'email' => 'epato@uam.edu.ni'],
+            ],
+            'Deontología Jurídica' => [
+                '1' => ['nombre' => 'Lic. Aitor Tilla', 'email' => 'atilla@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Elba Lazo', 'email' => 'elazo@uam.edu.ni'],
+            ],
+        ],
     ],
     'Diplomacia y Relaciones Internacionales' => [
         'Primer Año' => [
@@ -417,7 +732,124 @@ return [
                 '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
                 '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
             ],
-            //...
+            'Teoría de Relaciones Internacionales I' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Derecho Constitucional' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Introducción al Estudio del Derecho' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Geopolítica' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Técnicas de Redacción' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Historia de Nicaragua' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+        ],
+        'Segundo Año' => [
+            'Teoría de Relaciones Internacionales II' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Economía Internacional' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Derecho Internacional Público' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Organismos Internacionales I' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Política Exterior I' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Protocolo y Ceremonial Diplomático' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Análisis de Política Internacional' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Resolución de Conflictos' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+        ],
+        'Tercer Año' => [
+            'Cooperación Internacional' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Derechos Humanos' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Política Exterior de Nicaragua' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Organismos Internacionales II' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Integración Regional' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Seguridad Internacional' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Negociación y Mediación' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Opinión Pública Internacional' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+        ],
+        'Cuarto Año' => [
+            'Derecho Diplomático y Consular' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Análisis de Coyuntura' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Política Exterior de EE.UU.' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Taller de Investigación Diplomática' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
+            'Prácticas Profesionales' => [
+                '1' => ['nombre' => 'Lic. Marco Polo', 'email' => 'mpolo@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Juana de Arco', 'email' => 'jarco@uam.edu.ni'],
+            ],
+            'Seminario de Graduación' => [
+                '1' => ['nombre' => 'Lic. Napoleon Bonaparte', 'email' => 'nbonaparte@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Cleopatra Filopator', 'email' => 'cfilopator@uam.edu.ni'],
+            ],
         ],
     ],
     'Medicina' => [
@@ -580,7 +1012,88 @@ return [
                 '2' => ['nombre' => 'Ing. James Rumbaugh', 'email' => 'jrumbaugh@uam.edu.ni'],
             ],
         ],
-        // ... (resto de la carrera)
+        'Tercer Año' => [
+            'Probabilidad y Estadística' => [
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+            ],
+            'Base de Datos II' => [
+                '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+            ],
+            'Sistemas Operativos' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Redes de Computadoras I' => [
+                '1' => ['nombre' => 'Ing. Alan Turing', 'email' => 'aturing@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Ada Lovelace', 'email' => 'alovelace@uam.edu.ni'],
+            ],
+            'Investigación de Operaciones' => [
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+            ],
+            'Ingeniería de Software I' => [
+                '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+            ],
+            'Redes de Computadoras II' => [
+                '1' => ['nombre' => 'Ing. Edgar Codd', 'email' => 'ecodd@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Grace Hopper', 'email' => 'ghopper@uam.edu.ni'],
+            ],
+            'Programación Web' => [
+                '1' => ['nombre' => 'Ing. Grady Booch', 'email' => 'gbooch@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. James Rumbaugh', 'email' => 'jrumbaugh@uam.edu.ni'],
+            ],
+        ],
+        'Cuarto Año' => [
+            'Inteligencia Artificial' => [
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+            ],
+            'Seguridad Informática' => [
+                '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+            ],
+            'Ingeniería de Software II' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Redes Avanzadas' => [
+                '1' => ['nombre' => 'Ing. Alan Turing', 'email' => 'aturing@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Ada Lovelace', 'email' => 'alovelace@uam.edu.ni'],
+            ],
+            'Sistemas de Información Gerencial' => [
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+            ],
+            'Auditoría de Sistemas' => [
+                '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+            ],
+            'Taller de Graduación I' => [
+                '1' => ['nombre' => 'Ing. Edgar Codd', 'email' => 'ecodd@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Grace Hopper', 'email' => 'ghopper@uam.edu.ni'],
+            ],
+        ],
+        'Quinto Año' => [
+            'Prácticas Profesionales' => [
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+            ],
+            'Taller de Graduación II' => [
+                '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+            ],
+            'Computación en la Nube' => [
+                '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
+                '2' => ['nombre' => 'Lic. Marcos Castillo', 'email' => 'mcastillo@uam.edu.ni'],
+            ],
+            'Desarrollo de Aplicaciones Móviles' => [
+                '1' => ['nombre' => 'Ing. Alan Turing', 'email' => 'aturing@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Ada Lovelace', 'email' => 'alovelace@uam.edu.ni'],
+            ],
+        ],
     ],
     'Marketing y Publicidad' => [
         'Primer Año' => [
