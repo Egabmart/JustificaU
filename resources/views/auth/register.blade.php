@@ -34,9 +34,7 @@
     ];
     @endphp
 
-    <a href="/" class="flex justify-center mb-4">
-        <img src="{{ asset('images/uam-logo.jpeg') }}" alt="Logo UAM" class="w-20 h-20">
-    </a>
+    
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
