@@ -49,7 +49,9 @@
 
                             <div>
                                 <label for="grupo" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Grupo</label>
-                                <input type="text" name="grupo" id="grupo" value="{{ old('grupo') }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                <select id="grupo" name="grupo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600" disabled>
+                                    <option value="">Seleccione una clase primero</option>
+                                </select>
                                 @error('grupo')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                         </div>
@@ -97,39 +99,73 @@
     </div>
 
     <script>
-        const datosCarrera = @json($datosCarrera);
-        const anioSelect = document.getElementById('anio_carrera');
-        const claseSelect = document.getElementById('clase');
-        const oldAnio = "{{ old('anio_carrera') }}";
-        const oldClase = "{{ old('clase') }}";
+    const datosCarrera = @json($datosCarrera);
+    const anioSelect = document.getElementById('anio_carrera');
+    const claseSelect = document.getElementById('clase');
+    const grupoSelect = document.getElementById('grupo'); // <-- Nuevo
+    const oldAnio = "{{ old('anio_carrera') }}";
+    const oldClase = "{{ old('clase') }}";
+    const oldGrupo = "{{ old('grupo') }}"; // <-- Nuevo
 
-        anioSelect.addEventListener('change', function() {
-            const selectedAnio = this.value;
-            claseSelect.innerHTML = '<option value="">Seleccione una clase</option>';
-            claseSelect.disabled = true;
+    let clasesDelAnio = []; // <-- Variable para guardar las clases del año seleccionado
 
-            if (selectedAnio && datosCarrera[selectedAnio]) {
-                const clases = datosCarrera[selectedAnio];
-                clases.forEach(function(clase) {
-                    const option = document.createElement('option');
-                    option.value = clase;
-                    option.textContent = clase;
-                    claseSelect.appendChild(option);
-                });
-                claseSelect.disabled = false;
-            } else {
-                 claseSelect.innerHTML = '<option value="">Seleccione un año primero</option>';
-            }
-        });
+    anioSelect.addEventListener('change', function() {
+        const selectedAnio = this.value;
+        claseSelect.innerHTML = '<option value="">Seleccione una clase</option>';
+        claseSelect.disabled = true;
+        grupoSelect.innerHTML = '<option value="">Seleccione una clase primero</option>'; // <-- Limpiar grupos
+        grupoSelect.disabled = true; // <-- Deshabilitar grupos
 
-        if (oldAnio) {
-            anioSelect.value = oldAnio;
-            anioSelect.dispatchEvent(new Event('change'));
-            setTimeout(() => {
-                if(oldClase) {
-                    claseSelect.value = oldClase;
-                }
-            }, 100);
+        if (selectedAnio && datosCarrera[selectedAnio]) {
+            clasesDelAnio = datosCarrera[selectedAnio]; // Guardamos las clases
+            clasesDelAnio.forEach(function(clase) {
+                const option = document.createElement('option');
+                option.value = clase.nombre; // <-- Usamos el nombre de la clase
+                option.textContent = clase.nombre;
+                claseSelect.appendChild(option);
+            });
+            claseSelect.disabled = false;
+        } else {
+             claseSelect.innerHTML = '<option value="">Seleccione un año primero</option>';
         }
-    </script>
+    });
+
+    // --- ¡NUEVA LÓGICA PARA LOS GRUPOS! ---
+    claseSelect.addEventListener('change', function() {
+        const selectedClaseNombre = this.value;
+        grupoSelect.innerHTML = '<option value="">Seleccione un grupo</option>';
+        grupoSelect.disabled = true;
+
+        const claseSeleccionada = clasesDelAnio.find(c => c.nombre === selectedClaseNombre);
+
+        if (claseSeleccionada && claseSeleccionada.grupos) {
+            claseSeleccionada.grupos.forEach(function(grupo) {
+                const option = document.createElement('option');
+                option.value = grupo;
+                option.textContent = grupo;
+                grupoSelect.appendChild(option);
+            });
+            grupoSelect.disabled = false;
+        } else {
+            grupoSelect.innerHTML = '<option value="">No hay grupos disponibles</option>';
+        }
+    });
+
+    // --- LÓGICA PARA MANTENER VALORES ANTIGUOS SI HAY UN ERROR DE VALIDACIÓN ---
+    if (oldAnio) {
+        anioSelect.value = oldAnio;
+        anioSelect.dispatchEvent(new Event('change'));
+        setTimeout(() => {
+            if (oldClase) {
+                claseSelect.value = oldClase;
+                claseSelect.dispatchEvent(new Event('change'));
+                setTimeout(() => {
+                    if (oldGrupo) {
+                        grupoSelect.value = oldGrupo;
+                    }
+                }, 100);
+            }
+        }, 100);
+    }
+</script>
 </x-app-layout>
