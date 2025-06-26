@@ -39,9 +39,11 @@
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{{ $justificacione->student_name }}<br><span class="text-xs text-gray-500">{{$justificacione->student_id}}</span></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                            {{ $justificacione->clase }} (Grupo: {{ $justificacione->grupo }})<br>
+                                            <span class="font-medium text-gray-800 dark:text-gray-200">{{ $justificacione->clase }}</span><br>
+                                            <span class="text-xs">Grupo: {{ $justificacione->grupo }}</span><br>
+                                            <span class="text-xs italic">Prof. {{ $justificacione->profesor }}</span><br>
                                             <span class="text-xs text-gray-500">
-                                                {{ \Carbon\Carbon::parse($justificacione->fecha)->format('d/m/Y') }}<br>
+                                                {{ \Carbon\Carbon::parse($justificacione->fecha)->format('d/m/Y') }} | 
                                                 {{ \Carbon\Carbon::parse($justificacione->hora_inicio)->format('h:i A') }} - {{ \Carbon\Carbon::parse($justificacione->hora_fin)->format('h:i A') }}
                                             </span>
                                         </td>

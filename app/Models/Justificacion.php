@@ -16,6 +16,7 @@ class Justificacion extends Model
     'student_id',
     'clase',
     'grupo',
+    'profesor',
     'fecha',
     'hora_inicio',
     'hora_fin',

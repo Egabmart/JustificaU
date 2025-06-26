@@ -27,7 +27,9 @@ class JustificacionController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Validamos los datos, incluyendo el nuevo campo 'anio_carrera'
         $validatedData = $request->validate([
+            'anio_carrera' => 'required|string', // <-- ¡IMPORTANTE AÑADIR ESTO!
             'clase'        => 'required|string|max:255',
             'grupo'        => 'required|string|max:50',
             'fecha'        => 'required|date',
@@ -37,15 +39,35 @@ class JustificacionController extends Controller
             'constancia'   => 'required|file|mimes:pdf,jpg,png,jpeg|max:2048',
         ]);
 
-        $validatedData['user_id'] = Auth::id();
-        $validatedData['student_name'] = Auth::user()->name;
-        $validatedData['student_id'] = Auth::user()->cif;
+        // 2. Obtenemos datos del usuario
+        $user = Auth::user();
+        $validatedData['user_id'] = $user->id;
+        $validatedData['student_name'] = $user->name;
+        $validatedData['student_id'] = $user->cif;
 
+        // 3. Buscamos al profesor usando AHORA SÍ el año
+        $carrera = $user->carrera;
+        $anio = $validatedData['anio_carrera']; // <-- Obtenemos el año
+        $clase = $validatedData['clase'];
+        $grupo = $validatedData['grupo'];
+
+        // Construimos la ruta de configuración completa
+        $configPath = "docentes.{$carrera}.{$anio}.{$clase}.{$grupo}";
+        
+        // Usamos la función config() con la ruta correcta
+        $profesorInfo = config($configPath);
+
+        // Asignamos el nombre del profesor
+        $validatedData['profesor'] = $profesorInfo['nombre'] ?? 'Profesor no asignado';
+
+        // 4. Guardamos la constancia
         if ($request->hasFile('constancia')) {
             $validatedData['constancia_path'] = $request->file('constancia')->store('constancias', 'public');
         }
 
+        // 5. Creamos la justificación
         Justificacion::create($validatedData);
+
         return redirect()->route('justificaciones.index')->with('success', '¡Justificación creada exitosamente!');
     }
     
