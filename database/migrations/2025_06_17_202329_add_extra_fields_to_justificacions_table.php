@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::table('justificacions', function (Blueprint $table) {
             $table->string('clase')->after('student_id');
             $table->string('grupo')->after('clase');
-            $table->time('hora')->after('grupo');
-            $table->string('constancia_path')->nullable()->after('end_date'); // Para guardar la ruta del archivo
+            $table->time('hora_inicio')->after('grupo'); // <-- AÑADIDO
+            $table->time('hora_fin')->after('hora_inicio'); // <-- AÑADIDO
+            $table->string('constancia_path')->nullable()->after('status'); // Para guardar la ruta del archivo
         });
     }
 

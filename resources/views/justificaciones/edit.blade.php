@@ -44,22 +44,22 @@
                                 @error('grupo')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label for="hora" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Hora</label>
-                                <input type="time" name="hora" id="hora" value="{{ old('hora', $justificacione->hora) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
-                                @error('hora')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
+                                <label for="fecha" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha</label>
+                                <input type="date" name="fecha" id="fecha" value="{{ old('fecha') }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                @error('fecha')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="start_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Inicio</label>
-                                <input type="date" name="start_date" id="start_date" value="{{ old('start_date', $justificacione->start_date) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
-                                @error('start_date')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
+                                <label for="hora_inicio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Hora de Inicio</label>
+                                <input type="time" name="hora_inicio" id="hora_inicio" value="{{ old('hora_inicio') }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                @error('hora_inicio')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label for="end_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Fin</label>
-                                <input type="date" name="end_date" id="end_date" value="{{ old('end_date', $justificacione->end_date) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
-                                @error('end_date')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
+                                <label for="hora_fin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Hora de Fin</label>
+                                <input type="time" name="hora_fin" id="hora_fin" value="{{ old('hora_fin') }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                @error('hora_fin')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                         </div>
                         

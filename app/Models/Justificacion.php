@@ -11,19 +11,19 @@ class Justificacion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', // <-- Añadido para la relación
-        'student_name',
-        'student_id',
-        'clase',
-        'grupo',
-        'hora',
-        'reason',
-        'start_date',
-        'end_date',
-        'constancia_path',
-        'status',
-        'rejection_reason',
-    ];
+    'user_id',
+    'student_name',
+    'student_id',
+    'clase',
+    'grupo',
+    'fecha',
+    'hora_inicio',
+    'hora_fin',
+    'reason',
+    'constancia_path',
+    'status',
+    'rejection_reason',
+    ];  
 
     /**
      * Una justificación pertenece a un usuario.

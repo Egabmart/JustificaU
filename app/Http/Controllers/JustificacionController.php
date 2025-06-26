@@ -30,10 +30,10 @@ class JustificacionController extends Controller
         $validatedData = $request->validate([
             'clase'        => 'required|string|max:255',
             'grupo'        => 'required|string|max:50',
-            'hora'         => 'required', // <-- REGLA SIMPLIFICADA
+            'fecha'        => 'required|date',
+            'hora_inicio'  => 'required|date_format:H:i',
+            'hora_fin'     => 'required|date_format:H:i|after:hora_inicio',
             'reason'       => 'required|string',
-            'start_date'   => 'required|date',
-            'end_date'     => 'required|date|after_or_equal:start_date',
             'constancia'   => 'required|file|mimes:pdf,jpg,png,jpeg|max:2048',
         ]);
 
@@ -68,10 +68,10 @@ class JustificacionController extends Controller
         $validatedData = $request->validate([
             'clase' => 'required|string|max:255',
             'grupo' => 'required|string|max:50',
-            'hora' => 'required', // <-- REGLA SIMPLIFICADA
+            'fecha' => 'required|date',
+            'hora_inicio' => 'required|date_format:H:i',
+            'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
             'reason' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
             'constancia' => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048',
             'status' => 'required|in:Pendiente,Aprobada,Rechazada',
             'rejection_reason' => 'required_if:status,Rechazada|nullable|string|max:1000',
