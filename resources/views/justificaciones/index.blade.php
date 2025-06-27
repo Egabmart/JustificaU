@@ -67,7 +67,11 @@
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end items-center space-x-3">
-                                            <a href="{{ route('justificaciones.edit', $justificacione) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200">Editar</a>
+                                            @if (Auth::user()->role === 'admin')
+                                                <a href="{{ route('justificaciones.edit', $justificacione) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200">Ver</a>
+                                            @else
+                                                <a href="{{ route('justificaciones.edit', $justificacione) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200">Editar</a>
+                                            @endif
                                             <form action="{{ route('justificaciones.destroy', $justificacione) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta justificación?');">
                                                 @csrf
                                                 @method('DELETE')

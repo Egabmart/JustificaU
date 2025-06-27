@@ -75,48 +75,90 @@ class JustificacionController extends Controller
 
     public function edit(Justificacion $justificacione)
     {
+        // Validamos que el usuario pueda ver esta justificación (dueño o admin)
         if (Auth::user()->role !== 'admin' && $justificacione->user_id !== Auth::id()) {
             abort(403, 'Acción no autorizada.');
         }
-        return view('justificaciones.edit', compact('justificacione'));
+
+        $anioDeLaClase = null;
+        $carreraDelEstudiante = $justificacione->user->carrera;
+        $claseBuscada = $justificacione->clase;
+        $datosAcademicos = config('academic.' . $carreraDelEstudiante, []);
+
+        // Lógica para encontrar a qué año pertenece la clase guardada
+        foreach ($datosAcademicos as $anio => $clasesDelAnio) {
+            if (is_array($clasesDelAnio) && array_key_exists($claseBuscada, $clasesDelAnio)) {
+                $anioDeLaClase = $anio;
+                break;
+            }
+        }
+
+        // Pasamos la justificación y el año encontrado a la vista
+        return view('justificaciones.edit', [
+            'justificacione' => $justificacione,
+            'anioSeleccionado' => $anioDeLaClase,
+        ]);
     }
 
     public function update(Request $request, Justificacion $justificacione)
     {
-        if (Auth::user()->role !== 'admin' && $justificacione->user_id !== Auth::id()) {
-            abort(403, 'Acción no autorizada.');
-        }
-
-        $validatedData = $request->validate([
-            'clase' => 'required|string|max:255',
-            'grupo' => 'required|string|max:50',
-            'fecha' => 'required|date',
-            'hora_inicio' => 'required|date_format:H:i',
-            'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
-            'reason' => 'required|string',
-            'constancia' => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048',
-            'status' => 'required|in:Pendiente,Aprobada,Rechazada',
-            'rejection_reason' => 'required_if:status,Rechazada|nullable|string|max:1000',
-        ]);
-
-        if(Auth::user()->role === 'admin'){
-            $validatedData += $request->validate([
-                'student_name' => 'required|string|max:255',
-                'student_id'   => ['required', 'string', 'max:20', Rule::unique('justificacions')->ignore($justificacione->id)],
+        // Lógica para el Administrador
+        if (Auth::user()->role === 'admin') {
+            // El admin solo puede cambiar el estado y el motivo de rechazo.
+            $validatedData = $request->validate([
+                'status' => 'required|in:Pendiente,Aprobada,Rechazada',
+                'rejection_reason' => 'required_if:status,Rechazada|nullable|string|max:1000',
             ]);
-        }
-        
-        $justificacione->update($validatedData);
-        
-        if ($request->hasFile('constancia')) {
-            if ($justificacione->constancia_path) {
-                Storage::disk('public')->delete($justificacione->constancia_path);
-            }
-            $justificacione->constancia_path = $request->file('constancia')->store('constancias', 'public');
-            $justificacione->save();
-        }
 
-        return redirect()->route('justificaciones.index')->with('success', '¡Justificación actualizada exitosamente!');
+            if ($validatedData['status'] !== 'Rechazada') {
+                $validatedData['rejection_reason'] = null;
+            }
+
+            $justificacione->update($validatedData);
+            return redirect()->route('justificaciones.index')->with('success', '¡Estado de la justificación actualizado!');
+        }
+        
+        // Lógica para el Estudiante
+        else {
+            // Verificamos que el estudiante sea el dueño de la justificación
+            if ($justificacione->user_id !== Auth::id()) {
+                abort(403, 'Acción no autorizada.');
+            }
+
+            // El estudiante puede editar todos los campos, excepto el estado.
+            $validatedData = $request->validate([
+                'anio_carrera' => 'required|string',
+                'clase'        => 'required|string|max:255',
+                'grupo'        => 'required|string|max:50',
+                'fecha'        => 'required|date',
+                'hora_inicio'  => 'required|date_format:H:i',
+                'hora_fin'     => 'required|date_format:H:i|after:hora_inicio',
+                'reason'       => 'required|string',
+                'constancia'   => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048', // Opcional al editar
+            ]);
+            
+            // Buscamos y asignamos al profesor correspondiente
+            $carrera = Auth::user()->carrera;
+            $anio = $validatedData['anio_carrera'];
+            $clase = $validatedData['clase'];
+            $grupo = $validatedData['grupo'];
+            $profesorInfo = config("docentes.{$carrera}.{$anio}.{$clase}.{$grupo}");
+            $validatedData['profesor'] = $profesorInfo['nombre'] ?? 'Profesor no asignado';
+
+            // Actualizamos la justificación con los datos del estudiante
+            $justificacione->update($validatedData);
+
+            // Si se sube una nueva constancia, la procesamos
+            if ($request->hasFile('constancia')) {
+                if ($justificacione->constancia_path) {
+                    Storage::disk('public')->delete($justificacione->constancia_path);
+                }
+                $justificacione->constancia_path = $request->file('constancia')->store('constancias', 'public');
+                $justificacione->save();
+            }
+
+            return redirect()->route('justificaciones.index')->with('success', '¡Justificación actualizada exitosamente!');
+        }
     }
 
     public function destroy(Justificacion $justificacione)
