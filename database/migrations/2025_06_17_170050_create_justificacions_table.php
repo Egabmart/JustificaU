@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('justificacions', function (Blueprint $table) {
             $table->id();
             $table->string('student_name');
-            $table->string('student_id')->unique();
+            $table->string('student_id');
             $table->text('reason');
             $table->date('fecha'); // <-- CAMBIADO
             $table->string('status')->default('Pendiente');

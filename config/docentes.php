@@ -1078,12 +1078,12 @@ return [
         ],
         'Quinto Año' => [
             'Prácticas Profesionales' => [
-                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
+                '1' => ['nombre' => 'Ing. Alvaro Rocha', 'email' => 'rpalma@uam.edu.ni'],
                 '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
             ],
             'Taller de Graduación II' => [
                 '1' => ['nombre' => 'Ing. Marcela Solis', 'email' => 'msolis@uam.edu.ni'],
-                '2' => ['nombre' => 'Ing. Oscar Barquero', 'email' => 'obarquero@uam.edu.ni'],
+                '2' => ['nombre' => 'Ing. Josue Alonzo Gay', 'email' => 'obarquero@uam.edu.ni'],
             ],
             'Computación en la Nube' => [
                 '1' => ['nombre' => 'Lic. Elena Rivera', 'email' => 'erivera@uam.edu.ni'],
