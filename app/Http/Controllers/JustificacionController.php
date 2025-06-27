@@ -15,11 +15,22 @@ class JustificacionController extends Controller
 {
     public function index()
     {
-        $query = Justificacion::latest();
-        if (Auth::user()->role !== 'admin') {
-            $query->where('user_id', Auth::id());
+        // Obtenemos el usuario autenticado
+        $user = Auth::user();
+
+        // Verificamos el rol del usuario
+        if ($user->role === 'admin') {
+            // Si es administrador, obtiene todas las justificaciones.
+            // Usamos with('user') para cargar la relación y evitar problemas de N+1.
+            $justificaciones = Justificacion::with('user')->latest()->paginate(10);
+        } else {
+            // Si no es admin (es estudiante), solo obtiene sus propias justificaciones.
+            $justificaciones = Justificacion::where('user_id', $user->id)
+                                            ->latest()
+                                            ->paginate(10);
         }
-        $justificaciones = $query->paginate(10);
+
+        // Enviamos las justificaciones (ya filtradas) a la vista.
         return view('justificaciones.index', compact('justificaciones'));
     }
 
