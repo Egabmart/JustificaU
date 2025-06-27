@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail; // <-- AÑADIR ESTA LÍNEA
+use App\Mail\JustificacionAprobada;   // <-- AÑADIR ESTA LÍNEA
+use App\Mail\JustificacionRechazada; // <-- CORRECTO
 
 class JustificacionController extends Controller
 {
@@ -104,28 +107,39 @@ class JustificacionController extends Controller
     {
         // Lógica para el Administrador
         if (Auth::user()->role === 'admin') {
-            // El admin solo puede cambiar el estado y el motivo de rechazo.
             $validatedData = $request->validate([
                 'status' => 'required|in:Pendiente,Aprobada,Rechazada',
                 'rejection_reason' => 'required_if:status,Rechazada|nullable|string|max:1000',
             ]);
 
-            if ($validatedData['status'] !== 'Rechazada') {
-                $validatedData['rejection_reason'] = null;
+            // --- CORRECCIÓN AQUÍ ---
+            // 1. Guardamos el estado ACTUAL de la justificación ANTES de actualizarla.
+            $estadoAnterior = $justificacione->status;
+
+            // 2. Actualizamos la justificación en la base de datos.
+            $justificacione->update($validatedData);
+
+            // 3. Comparamos el estado anterior con el nuevo para decidir si enviamos el correo.
+            if ($estadoAnterior !== 'Aprobada' && $validatedData['status'] === 'Aprobada') {
+                // Aseguramos que la relación 'user' esté cargada para evitar errores.
+                $justificacione->load('user'); 
+                Mail::to($justificacione->user->email)->send(new JustificacionAprobada($justificacione));
             }
 
-            $justificacione->update($validatedData);
+            // Lógica de correo para RECHAZO
+            if ($estadoAnterior === 'Pendiente' && $validatedData['status'] === 'Rechazada') {
+                Mail::to($justificacione->user->email)->send(new JustificacionRechazada($justificacione));
+            }
+
             return redirect()->route('justificaciones.index')->with('success', '¡Estado de la justificación actualizado!');
         }
         
-        // Lógica para el Estudiante
+        // Lógica para el Estudiante (esta parte no necesita cambios)
         else {
-            // Verificamos que el estudiante sea el dueño de la justificación
             if ($justificacione->user_id !== Auth::id()) {
                 abort(403, 'Acción no autorizada.');
             }
 
-            // El estudiante puede editar todos los campos, excepto el estado.
             $validatedData = $request->validate([
                 'anio_carrera' => 'required|string',
                 'clase'        => 'required|string|max:255',
@@ -134,10 +148,9 @@ class JustificacionController extends Controller
                 'hora_inicio'  => 'required|date_format:H:i',
                 'hora_fin'     => 'required|date_format:H:i|after:hora_inicio',
                 'reason'       => 'required|string',
-                'constancia'   => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048', // Opcional al editar
+                'constancia'   => 'nullable|file|mimes:pdf,jpg,png,jpeg|max:2048',
             ]);
             
-            // Buscamos y asignamos al profesor correspondiente
             $carrera = Auth::user()->carrera;
             $anio = $validatedData['anio_carrera'];
             $clase = $validatedData['clase'];
@@ -145,10 +158,8 @@ class JustificacionController extends Controller
             $profesorInfo = config("docentes.{$carrera}.{$anio}.{$clase}.{$grupo}");
             $validatedData['profesor'] = $profesorInfo['nombre'] ?? 'Profesor no asignado';
 
-            // Actualizamos la justificación con los datos del estudiante
             $justificacione->update($validatedData);
 
-            // Si se sube una nueva constancia, la procesamos
             if ($request->hasFile('constancia')) {
                 if ($justificacione->constancia_path) {
                     Storage::disk('public')->delete($justificacione->constancia_path);
