@@ -16,6 +16,12 @@
                     <x-nav-link :href="route('justificaciones.index')" :active="request()->routeIs('justificaciones.*')">
                         {{ __('Justificaciones') }}
                     </x-nav-link>
+                    {{-- === NUEVO ENLACE PARA ADMINS === --}}
+                    @if(Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('reportes.index')" :active="request()->routeIs('reportes.index')">
+                            {{ __('Reportes') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -946,8 +946,8 @@ return [
     'Ingeniería en Sistemas de Información' => [
         'Primer Año' => [
             'Cálculo I' => [
-                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'rpalma@uam.edu.ni'],
-                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'msalas@uam.edu.ni'],
+                '1' => ['nombre' => 'Ing. Ricardo Palma', 'email' => 'mundogabrielmart@gmail.com'],
+                '2' => ['nombre' => 'Ing. Monica Salas', 'email' => 'blueraptoregm24@gmail.com'],
             ],
             'Física I' => [
                 '1' => ['nombre' => 'Ing. Alberto Rojas', 'email' => 'arojas@uam.edu.ni'],

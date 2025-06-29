@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\JustificacionController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,15 @@ Route::middleware('auth')->group(function () {
     // LA LÍNEA CLAVE ESTÁ AQUÍ.
     // Movemos el CRUD de justificaciones DENTRO de este grupo protegido.
     Route::resource('justificaciones', JustificacionController::class);
+    Route::get('/reportes', [ReporteController::class, 'index'])
+         ->name('reportes.index')
+         ->middleware('is_admin'); 
+    Route::get('/reportes/alumnos', [ReporteController::class, 'getAlumnosPorReporte'])
+         ->name('reportes.alumnos')
+         ->middleware('is_admin');
+    Route::post('/reportes/enviar', [ReporteController::class, 'enviarReporte'])
+         ->name('reportes.enviar')
+         ->middleware('is_admin');
 });
 
 
