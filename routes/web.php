@@ -16,6 +16,7 @@ use App\Http\Controllers\ReporteController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/acerca', [PageController::class, 'about'])->name('about');
 Route::get('/contacto', [PageController::class, 'contact'])->name('contact');
+Route::post('/contacto', [PageController::class, 'sendContactEmail'])->name('contact.send');
 
 
 // --- RUTAS PARA USUARIOS AUTENTICADOS ---
