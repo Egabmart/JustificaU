@@ -17,11 +17,13 @@
                         </div>
                     @endif
 
-                    <div class="flex justify-end mb-4">
-                        <a href="{{ route('justificaciones.create') }}" class="bg-uam-blue-500 hover:bg-uam-blue-600 text-white font-bold py-2 px-4 rounded">
-                            Crear Nueva Justificación
-                        </a>
-                    </div>
+                    @if (Auth::user()->role !== 'admin')
+                        <div class="flex justify-end mb-4">
+                            <a href="{{ route('justificaciones.create') }}" class="bg-uam-blue-500 hover:bg-uam-blue-600 text-white font-bold py-2 px-4 rounded">
+                                Crear Nueva Justificación
+                            </a>
+                        </div>
+                    @endif
 
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">

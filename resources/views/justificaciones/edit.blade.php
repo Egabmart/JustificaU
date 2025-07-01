@@ -91,11 +91,11 @@
                                 </div>
                                 <div>
                                     <label for="hora_inicio" class="block text-sm font-medium">Hora de Inicio</label>
-                                    <input type="time" name="hora_inicio" id="hora_inicio" value="{{ old('hora_inicio', $justificacione->hora_inicio) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                    <input type="time" name="hora_inicio" id="hora_inicio" value="{{ old('hora_inicio', \Carbon\Carbon::parse($justificacione->hora_inicio)->format('H:i')) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
                                 </div>
                                 <div>
                                     <label for="hora_fin" class="block text-sm font-medium">Hora de Fin</label>
-                                    <input type="time" name="hora_fin" id="hora_fin" value="{{ old('hora_fin', $justificacione->hora_fin) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                    <input type="time" name="hora_fin" id="hora_fin" value="{{ old('hora_fin', \Carbon\Carbon::parse($justificacione->hora_fin)->format('H:i')) }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
                                 </div>
                             </div>
 
