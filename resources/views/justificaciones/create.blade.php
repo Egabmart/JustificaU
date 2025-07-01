@@ -97,73 +97,74 @@
     </div>
 
     <script>
-    const datosCarrera = @json($datosCarrera);
-    const anioSelect = document.getElementById('anio_carrera');
-    const claseSelect = document.getElementById('clase');
-    const grupoSelect = document.getElementById('grupo'); // <-- Nuevo
-    const oldAnio = "{{ old('anio_carrera') }}";
-    const oldClase = "{{ old('clase') }}";
-    const oldGrupo = "{{ old('grupo') }}"; // <-- Nuevo
+        const datosCarrera = @json($datosCarrera);
+        const anioSelect = document.getElementById('anio_carrera');
+        const claseSelect = document.getElementById('clase');
+        const grupoSelect = document.getElementById('grupo');
+        const oldAnio = "{{ old('anio_carrera') }}";
+        const oldClase = "{{ old('clase') }}";
+        const oldGrupo = "{{ old('grupo') }}";
 
-    let clasesDelAnio = []; // <-- Variable para guardar las clases del año seleccionado
+        let clasesDelAnio = {}; // Usamos un objeto para guardar las clases del año
 
-    anioSelect.addEventListener('change', function() {
-        const selectedAnio = this.value;
-        claseSelect.innerHTML = '<option value="">Seleccione una clase</option>';
-        claseSelect.disabled = true;
-        grupoSelect.innerHTML = '<option value="">Seleccione una clase primero</option>'; // <-- Limpiar grupos
-        grupoSelect.disabled = true; // <-- Deshabilitar grupos
+        anioSelect.addEventListener('change', function() {
+            const selectedAnio = this.value;
+            claseSelect.innerHTML = '<option value="">Seleccione una clase</option>';
+            claseSelect.disabled = true;
+            grupoSelect.innerHTML = '<option value="">Seleccione una clase primero</option>';
+            grupoSelect.disabled = true;
 
-        if (selectedAnio && datosCarrera[selectedAnio]) {
-            clasesDelAnio = datosCarrera[selectedAnio]; // Guardamos las clases
-            clasesDelAnio.forEach(function(clase) {
-                const option = document.createElement('option');
-                option.value = clase.nombre; // <-- Usamos el nombre de la clase
-                option.textContent = clase.nombre;
-                claseSelect.appendChild(option);
-            });
-            claseSelect.disabled = false;
-        } else {
-             claseSelect.innerHTML = '<option value="">Seleccione un año primero</option>';
-        }
-    });
-
-    // --- ¡NUEVA LÓGICA PARA LOS GRUPOS! ---
-    claseSelect.addEventListener('change', function() {
-        const selectedClaseNombre = this.value;
-        grupoSelect.innerHTML = '<option value="">Seleccione un grupo</option>';
-        grupoSelect.disabled = true;
-
-        const claseSeleccionada = clasesDelAnio.find(c => c.nombre === selectedClaseNombre);
-
-        if (claseSeleccionada && claseSeleccionada.grupos) {
-            claseSeleccionada.grupos.forEach(function(grupo) {
-                const option = document.createElement('option');
-                option.value = grupo;
-                option.textContent = grupo;
-                grupoSelect.appendChild(option);
-            });
-            grupoSelect.disabled = false;
-        } else {
-            grupoSelect.innerHTML = '<option value="">No hay grupos disponibles</option>';
-        }
-    });
-
-    // --- LÓGICA PARA MANTENER VALORES ANTIGUOS SI HAY UN ERROR DE VALIDACIÓN ---
-    if (oldAnio) {
-        anioSelect.value = oldAnio;
-        anioSelect.dispatchEvent(new Event('change'));
-        setTimeout(() => {
-            if (oldClase) {
-                claseSelect.value = oldClase;
-                claseSelect.dispatchEvent(new Event('change'));
-                setTimeout(() => {
-                    if (oldGrupo) {
-                        grupoSelect.value = oldGrupo;
-                    }
-                }, 100);
+            if (selectedAnio && datosCarrera[selectedAnio]) {
+                clasesDelAnio = datosCarrera[selectedAnio]; // Guardamos el objeto de clases
+                // Iteramos sobre las llaves del objeto (los nombres de las clases)
+                Object.keys(clasesDelAnio).forEach(function(nombreClase) {
+                    const option = document.createElement('option');
+                    option.value = nombreClase;
+                    option.textContent = nombreClase;
+                    claseSelect.appendChild(option);
+                });
+                claseSelect.disabled = false;
+            } else {
+                claseSelect.innerHTML = '<option value="">Seleccione un año primero</option>';
             }
-        }, 100);
-    }
-</script>
+        });
+
+        claseSelect.addEventListener('change', function() {
+            const selectedClaseNombre = this.value;
+            grupoSelect.innerHTML = '<option value="">Seleccione un grupo</option>';
+            grupoSelect.disabled = true;
+
+            // Buscamos la clase seleccionada directamente en el objeto
+            const claseSeleccionada = clasesDelAnio[selectedClaseNombre];
+
+            if (claseSeleccionada && claseSeleccionada.grupos) {
+                claseSeleccionada.grupos.forEach(function(grupo) {
+                    const option = document.createElement('option');
+                    option.value = grupo;
+                    option.textContent = grupo;
+                    grupoSelect.appendChild(option);
+                });
+                grupoSelect.disabled = false;
+            } else {
+                grupoSelect.innerHTML = '<option value="">No hay grupos disponibles</option>';
+            }
+        });
+
+        // Lógica para mantener los valores antiguos si hay un error de validación
+        if (oldAnio) {
+            anioSelect.value = oldAnio;
+            anioSelect.dispatchEvent(new Event('change'));
+            setTimeout(() => {
+                if (oldClase) {
+                    claseSelect.value = oldClase;
+                    claseSelect.dispatchEvent(new Event('change'));
+                    setTimeout(() => {
+                        if (oldGrupo) {
+                            grupoSelect.value = oldGrupo;
+                        }
+                    }, 100);
+                }
+            }, 100);
+        }
+    </script>
 </x-app-layout>
