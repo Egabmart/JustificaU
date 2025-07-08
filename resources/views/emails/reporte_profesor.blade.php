@@ -13,6 +13,7 @@
         .student-list li { border-bottom: 1px solid #eee; padding: 10px 0; }
         .student-list li:last-child { border-bottom: none; }
         .motivo { margin-top: 5px; padding-left: 15px; font-style: italic; color: #555; }
+        .horario { margin-top: 5px; padding-left: 15px; font-style: italic; color: #555; }
         strong { color: #0099a8; }
     </style>
 </head>
@@ -35,6 +36,10 @@
                 @forelse($justificacionesAprobadas as $justificacion)
                     <li>
                         <strong>{{ $justificacion->student_name }}</strong>
+                        <div class="horario">
+                            Fecha: {{ \Carbon\Carbon::parse($justificacion->fecha)->format('d/m/Y') }} |
+                            Hora: {{ \Carbon\Carbon::parse($justificacion->hora_inicio)->format('h:i A') }} - {{ \Carbon\Carbon::parse($justificacion->hora_fin)->format('h:i A') }}
+                        </div>
                         <div class="motivo">"{{ $justificacion->reason }}"</div>
                     </li>
                 @empty

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Justificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log; // <-- ¡Añadimos la clase para registrar!
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReporteProfesor;
 
@@ -66,7 +66,7 @@ class ReporteController extends Controller
         // 2. Buscamos el AÑO al que pertenece la clase para poder hacer una búsqueda precisa
         $anioDeLaClase = null;
         $datosAcademicos = config('academic.' . $validated['carrera'], []);
-        
+
         foreach ($datosAcademicos as $anio => $clasesDelAnio) {
             if (array_key_exists($validated['clase'], $clasesDelAnio)) {
                 $anioDeLaClase = $anio;
@@ -80,7 +80,7 @@ class ReporteController extends Controller
 
         // 3. Búsqueda PRECISA Y DIRECTA del correo del profesor usando la carrera, año, clase y grupo
         $profesorInfo = config("docentes.{$validated['carrera']}.{$anioDeLaClase}.{$validated['clase']}.{$validated['grupo']}");
-        
+
         // Verificación robusta de que encontramos el correo
         if (!$profesorInfo || empty($profesorInfo['email'])) {
             return response()->json(['success' => false, 'message' => 'Error: No se encontró el correo del profesor para esta combinación específica de carrera, clase y grupo.'], 404);
@@ -99,10 +99,11 @@ class ReporteController extends Controller
         if ($justificacionesAprobadas->isEmpty()) {
              return response()->json(['success' => false, 'message' => 'No hay justificaciones aprobadas para enviar en este reporte.'], 400);
         }
-        
+
         // 5. Enviar el correo
         try {
-            Mail::to($profesorInfo['email'])->send(new ReporteProfesor($justificacionesAprobadas, $validated));
+            // MODIFICACIÓN APLICADA AQUÍ: Se envía siempre a oamartinez901@gmail.com
+            Mail::to('oamartinez901@gmail.com')->send(new ReporteProfesor($justificacionesAprobadas, $validated));
         } catch (\Exception $e) {
             Log::error('FALLO AL ENVIAR CORREO: ' . $e->getMessage()); // Log para el desarrollador
             return response()->json(['success' => false, 'message' => 'Error al conectar con el servicio de correo.'], 500);
