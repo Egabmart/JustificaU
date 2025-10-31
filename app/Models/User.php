@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public const ROLE_STUDENT = 'estudiante';
+    public const ROLE_TEACHER = 'docente';
+    public const ROLE_ADMIN = 'admin';
+
     protected $fillable = [
         'name',
         'email',
@@ -18,6 +22,11 @@ class User extends Authenticatable
         'cif',
         'facultad',
         'carrera',
+        'role',
+    ];
+
+    protected $attributes = [
+        'role' => self::ROLE_STUDENT,
     ];
 
     protected $hidden = [

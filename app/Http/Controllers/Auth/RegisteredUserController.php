@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Factories\UserFactory;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -40,7 +41,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // AÑADIMOS LOS NUEVOS CAMPOS AL CREAR EL USUARIO
-        $user = User::create([
+        $user = UserFactory::create(User::ROLE_STUDENT, [
             'name' => $request->name,
             'email' => $request->email,
             'cif' => $request->cif,
