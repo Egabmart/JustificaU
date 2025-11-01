@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail; // <-- AÑADIR ESTA LÍNEA
-use App\Mail\JustificacionAprobada;   // <-- AÑADIR ESTA LÍNEA
-use App\Mail\JustificacionRechazada; // <-- CORRECTO
+use App\Services\Notifications\JustificacionNotifier;
 
 class JustificacionController extends Controller
 {
@@ -131,15 +129,12 @@ class JustificacionController extends Controller
             $justificacione->update($validatedData);
 
             // 3. Comparamos el estado anterior con el nuevo para decidir si enviamos el correo.
-            if ($estadoAnterior !== 'Aprobada' && $validatedData['status'] === 'Aprobada') {
-                // Aseguramos que la relación 'user' esté cargada para evitar errores.
-                $justificacione->load('user'); 
-                Mail::to($justificacione->user->email)->send(new JustificacionAprobada($justificacione));
-            }
-
-            // Lógica de correo para RECHAZO
-            if ($estadoAnterior === 'Pendiente' && $validatedData['status'] === 'Rechazada') {
-                Mail::to($justificacione->user->email)->send(new JustificacionRechazada($justificacione));
+            if ($estadoAnterior !== $validatedData['status']) {
+                app(JustificacionNotifier::class)->notify($justificacione, [
+                    'event' => 'status_updated',
+                    'previous_status' => $estadoAnterior,
+                    'new_status' => $validatedData['status'],
+                ]);
             }
 
             return redirect()->route('justificaciones.index')->with('success', '¡Estado de la justificación actualizado!');

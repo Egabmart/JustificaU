@@ -6,8 +6,7 @@ use App\Models\Justificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ReporteProfesor;
+use App\Services\Notifications\JustificacionNotifier;
 
 class ReporteController extends Controller
 {
@@ -102,9 +101,13 @@ class ReporteController extends Controller
 
         // 5. Enviar el correo
         try {
-            // MODIFICACIÓN APLICADA AQUÍ: Se envía siempre a oamartinez901@gmail.com
-            Mail::to('oamartinez901@gmail.com')->send(new ReporteProfesor($justificacionesAprobadas, $validated));
-        } catch (\Exception $e) {
+            app(JustificacionNotifier::class)->notify(null, [
+                'event' => 'report_requested',
+                'recipient' => 'oamartinez901@gmail.com',
+                'justificaciones' => $justificacionesAprobadas,
+                'metadata' => $validated,
+            ]);
+        } catch (\Throwable $e) {
             Log::error('FALLO AL ENVIAR CORREO: ' . $e->getMessage()); // Log para el desarrollador
             return response()->json(['success' => false, 'message' => 'Error al conectar con el servicio de correo.'], 500);
         }
