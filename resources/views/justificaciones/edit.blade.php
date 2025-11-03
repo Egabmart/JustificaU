@@ -20,16 +20,10 @@
                     {{-- ============================================= --}}
                     @if (Auth::user()->role === 'admin')
                         <div class="mb-8 space-y-4">
-                            <h3 class="text-lg font-bold border-b border-gray-200 dark:border-gray-700 pb-2">Resumen de la Solicitud</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Estudiante</p><p>{{ $justificacione->student_name }}</p></div>
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Carnet (CIF)</p><p>{{ $justificacione->student_id }}</p></div>
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Clase y Grupo</p><p>{{ $justificacione->clase }} (Grupo: {{ $justificacione->grupo }})</p></div>
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Profesor</p><p>{{ $justificacione->profesor ?? 'No asignado' }}</p></div>
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Fecha y Hora</p><p>{{ \Carbon\Carbon::parse($justificacione->fecha)->format('d/m/Y') }} | {{ \Carbon\Carbon::parse($justificacione->hora_inicio)->format('h:i A') }} - {{ \Carbon\Carbon::parse($justificacione->hora_fin)->format('h:i A') }}</p></div>
-                                <div><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Constancia Adjunta</p><p>@if ($justificacione->constancia_path)<a href="{{ asset('storage/' . $justificacione->constancia_path) }}" target="_blank" class="text-uam-blue-500 hover:underline">Ver Archivo</a>@else<span>No se adjuntó archivo.</span>@endif</p></div>
+                            <h3 class="text-lg font-bold border-b border-gray-200 dark:border-gray-700 pb-2">{{ $contentTree->getLabel() }}</h3>
+                            <div class="space-y-4">
+                                @include('justificaciones.partials.component-node', ['component' => $contentTree, 'isRoot' => true])
                             </div>
-                            <div class="mt-4"><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Motivo</p><p class="mt-1 p-3 bg-gray-50 dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600">{{ $justificacione->reason }}</p></div>
                         </div>
 
                         <form method="POST" action="{{ route('justificaciones.update', $justificacione) }}" class="space-y-6 pt-6 border-t border-gray-200 dark:border-gray-700">

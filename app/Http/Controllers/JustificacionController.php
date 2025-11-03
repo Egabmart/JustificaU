@@ -117,6 +117,7 @@ class JustificacionController extends Controller
             'anioSeleccionado' => $anioDeLaClase,
             'allowedStatuses' => $justificacione->state()->allowedTransitions(),
             'statusLabels' => Justificacion::statusLabels(),
+            'contentTree' => $justificacione->contentComposite(),
         ]);
     }
 

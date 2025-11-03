@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo; // <-- Importar BelongsTo
 
+use App\Justificaciones\Composite\JustificacionComposite;
+use App\Justificaciones\Composite\JustificacionContentBuilder;
+
 use App\States\Justificacion\AprobadaState;
 use App\States\Justificacion\CreadaState;
 use App\States\Justificacion\EnviadaState;
