@@ -35,11 +35,11 @@ class StudentEmailObserver implements JustificacionObserver
             return;
         }
 
-        if ($previous !== 'Aprobada' && $current === 'Aprobada') {
+        if ($previous !== Justificacion::STATUS_APROBADA && $current === Justificacion::STATUS_APROBADA) {
             $this->sendMail($justificacion, new JustificacionAprobada($justificacion));
         }
 
-        if ($previous === 'Pendiente' && $current === 'Rechazada') {
+        if ($previous === Justificacion::STATUS_ENVIADA && $current === Justificacion::STATUS_RECHAZADA) {
             $this->sendMail($justificacion, new JustificacionRechazada($justificacion));
         }
     }

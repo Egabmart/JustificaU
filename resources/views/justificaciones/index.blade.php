@@ -57,15 +57,14 @@
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            @if ($justificacione->status == 'Aprobada')
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Aprobada</span>
-                                            @elseif ($justificacione->status == 'Rechazada')
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rechazada</span>
-                                                @if($justificacione->rejection_reason)
-                                                    <p class="text-xs text-gray-500 mt-1 italic" title="{{ $justificacione->rejection_reason }}">Motivo: {{ \Illuminate\Support\Str::limit($justificacione->rejection_reason, 20) }}</p>
-                                                @endif
-                                            @else
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span>
+                                            @php
+                                                $badgeClass = $justificacione->statusBadgeClass();
+                                            @endphp
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $badgeClass }}">
+                                                {{ $justificacione->statusLabel() }}
+                                            </span>
+                                            @if($justificacione->status === \App\Models\Justificacion::STATUS_RECHAZADA && $justificacione->rejection_reason)
+                                                <p class="text-xs text-gray-500 mt-1 italic" title="{{ $justificacione->rejection_reason }}">Motivo: {{ \Illuminate\Support\Str::limit($justificacione->rejection_reason, 20) }}</p>
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end items-center space-x-3">

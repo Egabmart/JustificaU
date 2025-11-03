@@ -92,7 +92,7 @@ class ReporteController extends Controller
                                                 ->whereHas('user', function ($query) use ($validated) { // Verificamos la carrera del usuario
                                                     $query->where('carrera', $validated['carrera']);
                                                 })
-                                                ->where('status', 'Aprobada')
+                                                ->where('status', Justificacion::STATUS_APROBADA)
                                                 ->get();
 
         if ($justificacionesAprobadas->isEmpty()) {

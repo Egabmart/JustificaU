@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('student_id');
             $table->text('reason');
             $table->date('fecha'); // <-- CAMBIADO
-            $table->string('status')->default('Pendiente');
+            $table->string('status')->default('CREADA');
             $table->timestamps();
         });
     }

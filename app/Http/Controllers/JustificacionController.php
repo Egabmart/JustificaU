@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use App\Services\Notifications\JustificacionNotifier;
+
 
 class JustificacionController extends Controller
 {
@@ -78,7 +78,13 @@ class JustificacionController extends Controller
         }
 
         // 5. Creamos la justificación
-        Justificacion::create($validatedData);
+        $validatedData['status'] = Justificacion::STATUS_CREADA;
+        $validatedData['rejection_reason'] = null;
+
+        $justificacion = Justificacion::create($validatedData);
+
+        // Transición inicial controlada por el patrón State
+        $justificacion->state()->send();
 
         return redirect()->route('justificaciones.index')->with('success', '¡Justificación creada exitosamente!');
     }
@@ -109,6 +115,8 @@ class JustificacionController extends Controller
         return view('justificaciones.edit', [
             'justificacione' => $justificacione,
             'anioSeleccionado' => $anioDeLaClase,
+            'allowedStatuses' => $justificacione->state()->allowedTransitions(),
+            'statusLabels' => Justificacion::statusLabels(),
         ]);
     }
 
@@ -116,26 +124,27 @@ class JustificacionController extends Controller
     {
         // Lógica para el Administrador
         if (Auth::user()->role === 'admin') {
+            $state = $justificacione->state();
+            $allowedStatuses = $state->allowedTransitions();
+
             $validatedData = $request->validate([
-                'status' => 'required|in:Pendiente,Aprobada,Rechazada',
-                'rejection_reason' => 'required_if:status,Rechazada|nullable|string|max:1000',
+                'status' => ['required', Rule::in($allowedStatuses)],
+                'rejection_reason' => [
+                    Rule::requiredIf(fn () => $request->input('status') === Justificacion::STATUS_RECHAZADA),
+                    'nullable',
+                    'string',
+                    'max:1000',
+                ],
             ]);
 
-            // --- CORRECCIÓN AQUÍ ---
-            // 1. Guardamos el estado ACTUAL de la justificación ANTES de actualizarla.
-            $estadoAnterior = $justificacione->status;
+            $targetStatus = $validatedData['status'];
 
-            // 2. Actualizamos la justificación en la base de datos.
-            $justificacione->update($validatedData);
-
-            // 3. Comparamos el estado anterior con el nuevo para decidir si enviamos el correo.
-            if ($estadoAnterior !== $validatedData['status']) {
-                app(JustificacionNotifier::class)->notify($justificacione, [
-                    'event' => 'status_updated',
-                    'previous_status' => $estadoAnterior,
-                    'new_status' => $validatedData['status'],
-                ]);
-            }
+            match ($targetStatus) {
+                Justificacion::STATUS_APROBADA => $state->approve(),
+                Justificacion::STATUS_RECHAZADA => $state->reject($validatedData['rejection_reason'] ?? null),
+                Justificacion::STATUS_EXPIRADA => $state->expire(),
+                default => throw new \RuntimeException('Transición de estado no soportada'),
+            };
 
             return redirect()->route('justificaciones.index')->with('success', '¡Estado de la justificación actualizado!');
         }

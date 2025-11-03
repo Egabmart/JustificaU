@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Justificacion;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -26,8 +25,8 @@ class DashboardController extends Controller
 
         // Ahora, calculamos todas las estadísticas a partir de la consulta (ya sea la global o la filtrada)
         $totalCount = $query->count();
-        $approvedCount = (clone $query)->where('status', 'Aprobada')->count();
-        $pendingCount = (clone $query)->where('status', 'Pendiente')->count();
+        $approvedCount = (clone $query)->where('status', Justificacion::STATUS_APROBADA)->count();
+        $sentCount = (clone $query)->where('status', Justificacion::STATUS_ENVIADA)->count();
         $recentJustificaciones = (clone $query)->latest()->take(5)->get();
 
         // Pasamos todas las variables (ya filtradas) a la vista
@@ -35,7 +34,7 @@ class DashboardController extends Controller
             'title' => 'Panel de Control',
             'totalCount' => $totalCount,
             'approvedCount' => $approvedCount,
-            'pendingCount' => $pendingCount,
+            'sentCount' => $sentCount,
             'recentJustificaciones' => $recentJustificaciones,
         ]);
     }

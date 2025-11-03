@@ -36,16 +36,37 @@
                             @csrf
                             @method('PUT')
                             <h3 class="text-lg font-bold">Gestionar Estado</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Estado actual:</span>
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $justificacione->statusBadgeClass() }}">{{ $justificacione->statusLabel() }}</span>
+                            </div>
                             <div>
                                 <label for="status" class="block text-sm font-medium">Cambiar estado a:</label>
-                                <select name="status" id="status" required class="mt-1 block w-full md:w-1/2 rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
-                                    <option value="Pendiente" @selected(old('status', $justificacione->status) == 'Pendiente')>Pendiente</option>
-                                    <option value="Aprobada" @selected(old('status', $justificacione->status) == 'Aprobada')>Aprobada</option>
-                                    <option value="Rechazada" @selected(old('status', $justificacione->status) == 'Rechazada')>Rechazada</option>
-                                </select>
+                                @if(!empty($allowedStatuses))
+                                    <select name="status" id="status" required class="mt-1 block w-full md:w-1/2 rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">
+                                        <option value="" disabled {{ old('status') ? '' : 'selected' }}>Seleccione una opción</option>
+                                        @foreach($allowedStatuses as $status)
+                                            <option value="{{ $status }}" @selected(old('status') === $status)>{{ $statusLabels[$status] ?? ucfirst(strtolower($status)) }}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">No hay transiciones disponibles desde este estado.</p>
+                                @endif
                             </div>
-                            <div id="rejection_reason_container" class="{{ old('status', $justificacione->status) == 'Rechazada' ? '' : 'hidden' }}"><label for="rejection_reason" class="block text-sm font-medium">Motivo del Rechazo</label><textarea name="rejection_reason" id="rejection_reason" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">{{ old('rejection_reason', $justificacione->rejection_reason) }}</textarea>@error('rejection_reason')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror</div>
-                            <div class="flex items-center justify-end space-x-4"><a href="{{ route('justificaciones.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">Cancelar</a><button type="submit" class="inline-flex items-center px-4 py-2 bg-uam-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-uam-blue-600">Guardar Estado</button></div>
+                            <div id="rejection_reason_container" class="{{ old('status', $justificacione->status) === \App\Models\Justificacion::STATUS_RECHAZADA ? '' : 'hidden' }}">
+                                <label for="rejection_reason" class="block text-sm font-medium">Motivo del Rechazo</label>
+                                <textarea name="rejection_reason" id="rejection_reason" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-600">{{ old('rejection_reason', $justificacione->rejection_reason) }}</textarea>
+                                @error('rejection_reason')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="flex items-center justify-end space-x-4">
+                                <a href="{{ route('justificaciones.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">Cancelar</a>
+                                @if(!empty($allowedStatuses))
+                                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-uam-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-uam-blue-600">Guardar Estado</button>
+                                @endif
+                            </div>
+                            
                         </form>
 
                     {{-- =================================== --}}
@@ -132,7 +153,7 @@
             if (statusSelect) {
                 const rejectionContainer = document.getElementById('rejection_reason_container');
                 statusSelect.addEventListener('change', function() {
-                    rejectionContainer.classList.toggle('hidden', this.value !== 'Rechazada');
+                    rejectionContainer.classList.toggle('hidden', this.value !== '{{ \App\Models\Justificacion::STATUS_RECHAZADA }}');
                 });
             }
 

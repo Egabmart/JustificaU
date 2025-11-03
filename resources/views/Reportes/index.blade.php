@@ -86,6 +86,14 @@
             const feedbackDiv = document.getElementById('report-feedback');
 
             // --- LÓGICA PARA EL BOTÓN "VER" (ABRIR POP-UP) ---
+            const statusLabels = @json(\App\Models\Justificacion::statusLabels());
+            const statusTextClasses = @json([
+                \App\Models\Justificacion::STATUS_APROBADA => 'text-green-500',
+                \App\Models\Justificacion::STATUS_RECHAZADA => 'text-red-500',
+                \App\Models\Justificacion::STATUS_ENVIADA => 'text-yellow-500',
+                \App\Models\Justificacion::STATUS_EXPIRADA => 'text-gray-500',
+            ]);
+
             document.querySelectorAll('.ver-alumnos-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const row = this.closest('tr');
@@ -111,11 +119,11 @@
                                     const li = document.createElement('li');
                                     li.className = 'py-2 flex justify-between items-center';
                                     
-                                    let statusClass = 'text-gray-500'; // Color por defecto para 'Pendiente'
-                                    if(alumno.status === 'Aprobada') statusClass = 'text-green-500';
-                                    if(alumno.status === 'Rechazada') statusClass = 'text-red-500';
-                                    
-                                    li.innerHTML = `<span>${alumno.student_name}</span><span class="font-bold ${statusClass}">${alumno.status}</span>`;
+                                    const status = alumno.status || '';
+                                    const statusClass = statusTextClasses[status] || 'text-gray-500';
+                                    const statusLabel = statusLabels[status] || status;
+
+                                    li.innerHTML = `<span>${alumno.student_name}</span><span class="font-bold ${statusClass}">${statusLabel}</span>`;
                                     alumnosLista.appendChild(li);
                                 });
                             } else {

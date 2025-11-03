@@ -17,8 +17,8 @@
                     <p class="mt-1 text-3xl font-semibold text-green-600">{{ $approvedCount }}</p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Pendientes</h3>
-                    <p class="mt-1 text-3xl font-semibold text-yellow-500">{{ $pendingCount }}</p>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Enviadas</h3>
+                    <p class="mt-1 text-3xl font-semibold text-yellow-500">{{ $sentCount }}</p>
                 </div>
             </div>
 
@@ -40,13 +40,12 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{{ $justificacion->student_name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">{{ \Carbon\Carbon::parse($justificacion->start_date)->format('d/m/Y') }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            @if ($justificacion->status == 'Aprobada')
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Aprobada</span>
-                                            @elseif ($justificacion->status == 'Rechazada')
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rechazada</span>
-                                            @else
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span>
-                                            @endif
+                                            @php
+                                                $badgeClass = $justificacion->statusBadgeClass();
+                                            @endphp
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $badgeClass }}">
+                                                {{ $justificacion->statusLabel() }}
+                                            </span>
                                         </td>
                                     </tr>
                                 @empty
